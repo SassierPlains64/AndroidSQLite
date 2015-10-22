@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Database</string>
+    <string name="name_hint">Enter Name here</string>
+    <string name="email_hint">Enter Email here</string>
+    <string name="save_button">SAVE</string>
+    <string name="count_button">COUNT</string>
+</resources>
