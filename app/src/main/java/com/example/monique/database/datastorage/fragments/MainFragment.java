@@ -4,6 +4,7 @@
 
 package com.example.monique.database.datastorage.fragments;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.example.monique.database.R;
 import com.example.monique.database.datastorage.contract.ContactContract.ContactEntry;
 import com.example.monique.database.datastorage.dbhelper.ContactDbHelper;
+import com.example.monique.database.datastorage.interfaces.ShowOverViewListener;
 
 /**
  * The main user interface of this application when it is started.
@@ -26,9 +28,21 @@ import com.example.monique.database.datastorage.dbhelper.ContactDbHelper;
 public class MainFragment extends Fragment {
 
     SQLiteDatabase db;
+    ShowOverViewListener mCallback;
 
     private EditText name;
     private EditText email;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mCallback = (ShowOverViewListener)activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    " must implement the ShowOverViewListener interface");
+        }
+    }
 
     /**
      * Called the moment this fragment comes into existence (becomes visible).
@@ -47,6 +61,7 @@ public class MainFragment extends Fragment {
         email = (EditText)rootView.findViewById(R.id.editEmail);
         final Button save = (Button)rootView.findViewById(R.id.saveButton);
         final Button count = (Button)rootView.findViewById(R.id.countButton);
+        final Button overview = (Button)rootView.findViewById(R.id.overViewButton);
 
         // Set which actions to take when the 'save' button is pressed.
         save.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +75,7 @@ public class MainFragment extends Fragment {
 
                 long newRowId = db.insert(ContactEntry.TABLE_NAME, null, values);
 
-                if(newRowId >= 0) {
+                if (newRowId >= 0) {
                     Toast.makeText(getActivity(), "Successfully inserted a new record: " + newRowId,
                             Toast.LENGTH_SHORT).show();
                 }
@@ -93,6 +108,13 @@ public class MainFragment extends Fragment {
                 }
                 c.close();
                 db.close();
+            }
+        });
+
+        overview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCallback.showOverViewFragment();
             }
         });
 

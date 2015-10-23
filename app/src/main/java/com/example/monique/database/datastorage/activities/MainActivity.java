@@ -5,15 +5,19 @@
 package com.example.monique.database.datastorage.activities;
 
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.example.monique.database.R;
 import com.example.monique.database.datastorage.fragments.MainFragment;
+import com.example.monique.database.datastorage.fragments.OverViewFragment;
+import com.example.monique.database.datastorage.interfaces.ShowOverViewListener;
 
 /**
  * The main activity of the application. It displays the content using fragments.
  */
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements
+        ShowOverViewListener{
 
     /**
      * Called on the moment of creation of this activity.
@@ -39,5 +43,14 @@ public class MainActivity extends FragmentActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, fragment).commit();
         }
+    }
+
+    @Override
+    public void showOverViewFragment() {
+        OverViewFragment overViewFragment = new OverViewFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, overViewFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
