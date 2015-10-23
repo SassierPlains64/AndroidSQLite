@@ -1,9 +1,14 @@
+/**
+ * Created by Bas Martens on October 22nd, 2015
+ */
+
 package com.example.monique.database.datastorage.contract;
 
 import android.provider.BaseColumns;
 
 /**
- * Created by Monique on 20-10-2015.
+ * This class defines the contract for the Contact table of the SQLite database used in this
+ * application. It could also be viewed as the 'scheme' for the database table.
  */
 public final class ContactContract {
 

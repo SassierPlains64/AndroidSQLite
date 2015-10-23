@@ -1,3 +1,7 @@
+/**
+ * Created by Bas Martens on October 22nd, 2015
+ */
+
 package com.example.monique.database.datastorage.fragments;
 
 import android.content.ContentValues;
@@ -16,6 +20,9 @@ import com.example.monique.database.R;
 import com.example.monique.database.datastorage.contract.ContactContract.ContactEntry;
 import com.example.monique.database.datastorage.dbhelper.ContactDbHelper;
 
+/**
+ * The main user interface of this application when it is started.
+ */
 public class MainFragment extends Fragment {
 
     SQLiteDatabase db;
@@ -23,6 +30,15 @@ public class MainFragment extends Fragment {
     private EditText name;
     private EditText email;
 
+    /**
+     * Called the moment this fragment comes into existence (becomes visible).
+     * @param inflater              LayoutInflater used to populate this fragment with a layout read
+     *                              from a layout file.
+     * @param container             Object which provides a set of LayoutParams values for root of
+     *                              the returned hierarchy.
+     * @param savedInstanceState    Any possibly saved data from a previous instance.
+     * @return                      The view which will be displayed on screen.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.main_view, container, false);
@@ -32,6 +48,7 @@ public class MainFragment extends Fragment {
         final Button save = (Button)rootView.findViewById(R.id.saveButton);
         final Button count = (Button)rootView.findViewById(R.id.countButton);
 
+        // Set which actions to take when the 'save' button is pressed.
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +70,7 @@ public class MainFragment extends Fragment {
             }
         });
 
+        // Set which actions to take when the 'count' button is pressed.
         count.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +99,9 @@ public class MainFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Helper method which clears the on screen EditText views.
+     */
     private void clearControls() {
         name.setText("");
         email.setText("");

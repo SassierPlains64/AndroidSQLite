@@ -1,3 +1,7 @@
+/**
+ * Created by Bas Martens on October 22nd, 2015
+ */
+
 package com.example.monique.database.datastorage.activities;
 
 import android.support.v4.app.FragmentActivity;
@@ -6,8 +10,15 @@ import android.os.Bundle;
 import com.example.monique.database.R;
 import com.example.monique.database.datastorage.fragments.MainFragment;
 
+/**
+ * The main activity of the application. It displays the content using fragments.
+ */
 public class MainActivity extends FragmentActivity {
 
+    /**
+     * Called on the moment of creation of this activity.
+     * @param savedInstanceState    Any possibly saved data from a previous instance of this activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
