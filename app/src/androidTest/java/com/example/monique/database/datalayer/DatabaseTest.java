@@ -3,6 +3,7 @@ package com.example.monique.database.datalayer;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
+import android.util.Log;
 
 import com.example.monique.database.datastorage.contract.ContactContract;
 import com.example.monique.database.datastorage.dbhelper.ContactDbHelper;
@@ -54,6 +55,7 @@ public class DatabaseTest extends AndroidTestCase {
 
         int columnNameIndex = c.getColumnIndex("name");
         do {
+            Log.d(LOG_TAG, "c.getString: " + c.getString(columnNameIndex));
             String columnName = c.getString(columnNameIndex);
             contactColumnHashSet.remove(columnName);
         } while (c.moveToNext());
