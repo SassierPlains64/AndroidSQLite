@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Database</string>
-    <string name="name_hint">Enter Name here</string>
-    <string name="email_hint">Enter Email here</string>
-    <string name="save_button">SAVE</string>
-    <string name="count_button">COUNT</string>
-    <string name="overview_button">Show overview</string>
-    <string name="no_records">No records found</string>
-</resources>

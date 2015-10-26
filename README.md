@@ -1,1 +1,0 @@
-AndroidSQLite -> A small Android application demonstrating the power of a SQLite database
